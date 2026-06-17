@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tiến độ tuyển sinh 2026-2027 – Phường Thanh Khê</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.3.0/tabler-icons.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;font-size:14px;color:#1a1a1a;background:#f5f5f3;min-height:100vh}
+.screen{display:none}
+.screen.active{display:block}
+.card{background:#fff;border:1px solid #e5e5e3;border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+.header-bar{background:#fff;border-bottom:1px solid #e5e5e3;padding:12px 1.5rem;position:sticky;top:0;z-index:10}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.wrap{max-width:1200px;margin:0 auto;padding:1.5rem}
+.badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:500}
+.badge-blue{background:#e8f0fe;color:#1a56db}
+.badge-success{background:#e3f9e5;color:#1a7f3c}
+.badge-warn{background:#fff3e0;color:#b45309}
+.badge-purple{background:#ede9fe;color:#6d28d9}
+.badge-red{background:#fef2f2;color:#b91c1c}
+.tab-bar{display:flex;gap:4px;margin-bottom:1.25rem;border-bottom:1px solid #e5e5e3}
+.tab{padding:8px 16px;cursor:pointer;font-size:13px;color:#666;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab.active{color:#1a1a1a;font-weight:600;border-bottom-color:#1a1a1a}
+.field-group{margin-bottom:.875rem}
+.field-label{font-size:12px;color:#555;margin-bottom:4px;line-height:1.4}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:.875rem}
+@media(max-width:600px){.field-row{grid-template-columns:1fr}}
+input[type=number],input[type=text],input[type=password],textarea,select{width:100%;padding:7px 11px;border-radius:8px;border:1px solid #d1d1cf;background:#fff;color:#1a1a1a;font-size:14px;font-family:inherit}
+input[type=number],input[type=text],input[type=password],select{height:38px}
+textarea{resize:vertical;min-height:76px;line-height:1.5}
+input:focus,textarea:focus,select:focus{outline:none;border-color:#1a56db;box-shadow:0 0 0 3px rgba(26,86,219,.08)}
+.btn{height:38px;padding:0 18px;border-radius:8px;border:1px solid #d1d1cf;background:#fff;color:#1a1a1a;font-size:13px;cursor:pointer;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{background:#f5f5f3}
+.btn-primary{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.btn-primary:hover{background:#333}
+.btn-green{background:#0f6e56;color:#e1f5ee;border-color:#0f6e56}
+.btn-green:hover{background:#0a5240}
+.btn-red{background:#b91c1c;color:#fff;border-color:#b91c1c}
+.btn-red:hover{background:#991b1b}
+.btn-sm{height:32px;padding:0 12px;font-size:12px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem}
+@media(max-width:600px){.stat-grid{grid-template-columns:1fr 1fr}}
+.stat{background:#fff;border:1px solid #e5e5e3;border-radius:10px;padding:.875rem 1rem}
+.stat-label{font-size:11px;color:#666;margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px}
+.stat-val{font-size:24px;font-weight:600}
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{padding:7px 8px;text-align:center;color:#555;font-weight:600;border:1px solid #e5e5e3;background:#f9f9f7;line-height:1.35;vertical-align:middle;font-size:11px}
+.tbl td{padding:6px 8px;border:1px solid #e5e5e3;vertical-align:middle}
+.tbl .num{text-align:right}
+.tbl .ctr{text-align:center}
+.tbl tfoot td{font-weight:600;background:#f5f5f3}
+.progress-wrap{background:#e5e5e3;border-radius:100px;height:6px;overflow:hidden;min-width:44px}
+.progress-bar{height:100%;border-radius:100px;background:#1d9e75}
+.login-wrap{max-width:400px;margin:3rem auto;padding:0 1rem}
+.alert-err{padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:1rem;border:1px solid #fecaca;background:#fef2f2;color:#b91c1c}
+.saved-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#1d9e75;margin-right:5px}
+.overflow-x{overflow-x:auto}
+.note-cell{max-width:150px;white-space:pre-wrap;word-break:break-word;font-size:11px;color:#555}
+.date-cell{font-size:11px;color:#888;white-space:nowrap;text-align:center}
+.dot-badge{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.dot-open{background:#1d9e75}
+.dot-closed{background:#b91c1c}
+.dot-upcoming{background:#b45309}
+.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;font-size:13px;color:#1e40af;margin-bottom:1rem;display:flex;align-items:flex-start;gap:8px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#1d9e75;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="screen-login" class="screen active">
+  <div class="login-wrap">
+    <div style="text-align:center;margin-bottom:1.75rem">
+      <div style="width:52px;height:52px;background:#1a56db;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#fff;font-size:26px"><i class="ti ti-school"></i></div>
+      <p style="font-size:12px;color:#888;margin-bottom:6px">PHÒNG VĂN HÓA – XÃ HỘI · UBND PHƯỜNG THANH KHÊ</p>
+      <p style="font-size:18px;font-weight:700;line-height:1.4">Tiến độ tuyển sinh<br>Năm học 2026-2027</p>
+    </div>
+    <div class="card">
+      <div id="login-err" class="alert-err" style="display:none"></div>
+      <div class="field-group">
+        <div class="field-label">Mã đăng nhập</div>
+        <input type="text" id="inp-user" placeholder="Nhập mã trường" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()"/>
+      </div>
+      <div class="field-group" style="margin-bottom:1.25rem">
+        <div class="field-label">Mật khẩu</div>
+        <input type="password" id="inp-pass" placeholder="Nhập mật khẩu" onkeydown="if(event.key==='Enter')doLogin()"/>
+      </div>
+      <button class="btn btn-primary" style="width:100%" onclick="doLogin()"><i class="ti ti-login"></i> Đăng nhập</button>
+    </div>
+  </div>
+</div>
+
+<!-- TRUONG -->
+<div id="screen-truong" class="screen">
+  <div class="header-bar">
+    <div class="header-inner">
+      <div style="flex:1">
+        <div style="font-size:11px;color:#888" id="lbl-cap"></div>
+        <div style="font-size:15px;font-weight:600" id="lbl-truong"></div>
+      </div>
+      <span id="lbl-dot-status" class="badge badge-blue"></span>
+      <button class="btn btn-sm" onclick="doLogout()"><i class="ti ti-logout"></i> Thoát</button>
+    </div>
+  </div>
+  <div class="wrap">
+    <div id="dot-info-box" class="info-box" style="display:none"></div>
+    <div class="tab-bar">
+      <div class="tab active" id="tab-nhap" onclick="switchTab('nhap')">Nhập số liệu</div>
+      <div class="tab" id="tab-xem" onclick="switchTab('xem')">Lịch sử nộp</div>
+    </div>
+    <div id="pane-nhap">
+      <div class="card">
+        <p style="font-size:14px;font-weight:600;margin-bottom:4px">Điền số liệu tiến độ tuyển sinh</p>
+        <p style="font-size:12px;color:#888;margin-bottom:1.25rem" id="lbl-dot-sub"></p>
+        <div id="form-fields"></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:1.25rem;padding-top:1rem;border-top:1px solid #e5e5e3">
+          <button class="btn btn-primary" id="btn-save" onclick="saveData()"><i class="ti ti-device-floppy"></i> Lưu số liệu</button>
+          <span id="save-msg" style="font-size:12px;color:#1a7f3c;display:none"><span class="saved-dot"></span>Đã lưu thành công</span>
+        </div>
+      </div>
+    </div>
+    <div id="pane-xem" style="display:none">
+      <div class="card">
+        <p style="font-size:14px;font-weight:600;margin-bottom:1rem">Lịch sử nộp số liệu theo đợt</p>
+        <div id="view-data"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="screen-admin" class="screen">
+  <div class="header-bar">
+    <div class="header-inner">
+      <div style="flex:1">
+        <div style="font-size:11px;color:#888">Phòng Văn hóa – Xã hội · Quản trị viên</div>
+        <div style="font-size:15px;font-weight:600">Bảng tổng hợp tiến độ tuyển sinh 2026-2027</div>
+      </div>
+      <button class="btn btn-sm" id="btn-export-admin" onclick="exportExcel()"><i class="ti ti-file-spreadsheet"></i> Xuất Excel</button>
+      <button class="btn btn-sm" onclick="switchAdminScreen('ql')" style="margin-left:6px"><i class="ti ti-settings"></i> Quản lý đợt</button>
+      <button class="btn btn-sm" onclick="doLogout()" style="margin-left:6px"><i class="ti ti-logout"></i> Thoát</button>
+    </div>
+  </div>
+  <div class="wrap">
+
+    <!-- Màn hình tổng hợp -->
+    <div id="admin-main">
+      <div class="stat-grid" id="admin-stats"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+        <span style="font-size:13px;color:#555">Xem số liệu đợt:</span>
+        <select id="sel-dot" onchange="onChangeDot()" style="width:auto;height:32px;font-size:13px"></select>
+        <span id="lbl-dot-badge"></span>
+      </div>
+      <div class="tab-bar">
+        <div class="tab active" id="atab-thcs" onclick="switchAdminTab('THCS')">THCS (10 trường)</div>
+        <div class="tab" id="atab-th" onclick="switchAdminTab('TH')">Tiểu học (14 trường)</div>
+      </div>
+      <div class="card"><div class="overflow-x"><table class="tbl" id="admin-tbl"></table></div></div>
+    </div>
+
+    <!-- Màn hình quản lý đợt -->
+    <div id="admin-ql" style="display:none">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem">
+        <button class="btn btn-sm" onclick="switchAdminScreen('main')"><i class="ti ti-arrow-left"></i> Quay lại</button>
+        <span style="font-size:15px;font-weight:600">Quản lý đợt báo cáo</span>
+      </div>
+      <div class="card" style="margin-bottom:1rem">
+        <p style="font-size:13px;font-weight:600;margin-bottom:1rem">Tạo đợt báo cáo mới</p>
+        <div class="field-row">
+          <div><div class="field-label">Tên đợt</div><input type="text" id="new-dot-ten" placeholder="VD: Đợt 1 – Ngày 18/06"/></div>
+          <div><div class="field-label">Trạng thái</div>
+            <select id="new-dot-tt">
+              <option value="open">Đang mở (các trường được nhập)</option>
+              <option value="closed">Đã đóng (khóa nhập liệu)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="addDot()"><i class="ti ti-plus"></i> Tạo đợt</button>
+      </div>
+      <div class="card">
+        <p style="font-size:13px;font-weight:600;margin-bottom:1rem">Danh sách đợt báo cáo</p>
+        <div id="dot-list"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+// ── Dữ liệu cố định ───────────────────────────────────────
+const TRUONG_THCS=[
+  {id:'THCS_HTK',ten:'Huỳnh Thúc Kháng',lop:12,hs:480,pcgd:448,pass:'htk@2026'},
+  {id:'THCS_PDP',ten:'Phan Đình Phùng',lop:8,hs:320,pcgd:222,pass:'pdp@2026'},
+  {id:'THCS_DDT',ten:'Đỗ Đăng Tuyển',lop:7,hs:280,pcgd:327,pass:'ddt@2026'},
+  {id:'THCS_LTHG',ten:'Lê Thị Hồng Gấm',lop:6,hs:240,pcgd:215,pass:'lthg@2026'},
+  {id:'THCS_HD',ten:'Hoàng Diệu',lop:6,hs:240,pcgd:210,pass:'hd@2026'},
+  {id:'THCS_NT',ten:'Nguyễn Trãi',lop:6,hs:240,pcgd:170,pass:'nt@2026'},
+  {id:'THCS_NTMK',ten:'Nguyễn Thị Minh Khai',lop:5,hs:200,pcgd:149,pass:'ntmk@2026'},
+  {id:'THCS_CVA',ten:'Chu Văn An',lop:7,hs:280,pcgd:183,pass:'cva@2026'},
+  {id:'THCS_NDH',ten:'Nguyễn Duy Hiệu',lop:4,hs:160,pcgd:258,pass:'ndh@2026'},
+  {id:'THCS_NC',ten:'Nguyễn Chơn',lop:7,hs:280,pcgd:110,pass:'nc@2026'}
+];
+const TRUONG_TH=[
+  {id:'TH_HNH',ten:'Huỳnh Ngọc Huệ',lop:7,hs:224,pcgd:172,pass:'hnh@2026'},
+  {id:'TH_LQS',ten:'Lê Quang Sung',lop:6,hs:204,pcgd:217,pass:'lqs@2026'},
+  {id:'TH_LVT',ten:'Lê Văn Tám',lop:6,hs:204,pcgd:133,pass:'lvt@2026'},
+  {id:'TH_DSTK',ten:'Dũng Sĩ Thanh Khê',lop:6,hs:204,pcgd:178,pass:'dstk@2026'},
+  {id:'TH_DTD',ten:'Đoàn Thị Điểm',lop:7,hs:238,pcgd:198,pass:'dtd@2026'},
+  {id:'TH_NTT',ten:'Nguyễn Trung Trực',lop:3,hs:80,pcgd:80,pass:'ntt@2026'},
+  {id:'TH_HHT',ten:'Hà Huy Tập',lop:5,hs:170,pcgd:105,pass:'hht@2026'},
+  {id:'TH_DBL',ten:'Đinh Bộ Lĩnh',lop:5,hs:160,pcgd:156,pass:'dbl@2026'},
+  {id:'TH_TCV',ten:'Trần Cao Vân',lop:8,hs:272,pcgd:243,pass:'tcv@2026'},
+  {id:'TH_NBN',ten:'Nguyễn Bá Ngọc',lop:3,hs:90,pcgd:75,pass:'nbn@2026'},
+  {id:'TH_HN',ten:'Hàm Nghi',lop:2,hs:70,pcgd:55,pass:'hn@2026'},
+  {id:'TH_HL',ten:'Hoa Lư',lop:6,hs:192,pcgd:182,pass:'hl@2026'},
+  {id:'TH_DBP',ten:'Điện Biên Phủ',lop:6,hs:204,pcgd:153,pass:'dbp@2026'},
+  {id:'TH_NDC',ten:'Nguyễn Đức Cảnh',lop:6,hs:192,pcgd:124,pass:'ndc@2026'}
+];
+const ALL_TRUONG=[...TRUONG_THCS,...TRUONG_TH];
+const ADMIN={pass:'PVH@admin2026'};
+const COL_THCS={truong:'Trường THCS',lop_label:'Lớp 6',c4:'Tổng số hồ sơ đúng tuyến',c5:'Số HS không có trong DS dự kiến tuyển sinh đã được xác minh đúng tuyến',c6:'Hồ sơ chờ xác minh',c7:'Dự kiến số HS trái tuyến',c8:'Tổng dự kiến',c9:'Tỉ lệ hoàn thành',c11:'PCGD'};
+const COL_TH={truong:'Trường',lop_label:'Lớp 1',c4:'Tổng số hồ sơ đúng tuyến đã nhận',c5:'Số HS không có trong DS dự kiến tuyển sinh đã được xác minh đúng tuyến',c6:'Hồ sơ chờ xác minh',c7:'Dự kiến số HS trái tuyến',c8:'Tổng dự kiến',c9:'Tỉ lệ hoàn thành',c11:'PCGD'};
+
+// ── localStorage helpers ──────────────────────────────────
+const LS_DOTS = 'ts2026_dots';
+const LS_DB   = 'ts2026_db';
+
+function loadDots(){
+  try{ return JSON.parse(localStorage.getItem(LS_DOTS))||[]; }catch(e){return [];}
+}
+function saveDots(d){ localStorage.setItem(LS_DOTS, JSON.stringify(d)); }
+function loadDB(){
+  try{ return JSON.parse(localStorage.getItem(LS_DB))||{}; }catch(e){return {};}
+}
+function saveDB(d){ localStorage.setItem(LS_DB, JSON.stringify(d)); }
+
+// ── Khởi tạo đợt mặc định nếu chưa có ───────────────────
+function initDots(){
+  let dots = loadDots();
+  if(dots.length === 0){
+    dots = [
+      {id:'dot1', ten:'Đợt 1 – Ngày 18/06', tt:'open',  created: nowStr()},
+      {id:'dot2', ten:'Đợt 2 – Ngày 22/06', tt:'upcoming', created: nowStr()}
+    ];
+    saveDots(dots);
+  }
+  return dots;
+}
+
+function nowStr(){
+  return new Date().toLocaleString('vi-VN',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+function getActiveDot(){
+  const dots = loadDots();
+  return dots.find(d=>d.tt==='open') || null;
+}
+
+// ── State ─────────────────────────────────────────────────
+let currentUser = null;
+let adminTab    = 'THCS';
+let adminDotId  = null;
+
+function getTruong(id){return ALL_TRUONG.find(t=>t.id===id)}
+function isTHCS(id){return !!TRUONG_THCS.find(t=>t.id===id)}
+function getCols(id){return isTHCS(id)?COL_THCS:COL_TH}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+
+// ── Login / Logout ────────────────────────────────────────
+function doLogin(){
+  const u=document.getElementById('inp-user').value.trim();
+  const p=document.getElementById('inp-pass').value.trim();
+  const err=document.getElementById('login-err');
+  if(u==='admin'&&p===ADMIN.pass){currentUser={role:'admin'};err.style.display='none';showAdmin();return;}
+  const tr=ALL_TRUONG.find(t=>t.id===u&&t.pass===p);
+  if(tr){currentUser={role:'truong',truongId:tr.id};err.style.display='none';showTruong();return;}
+  err.textContent='Sai mã đăng nhập hoặc mật khẩu.';err.style.display='block';
+}
+function doLogout(){
+  currentUser=null;show('screen-login');
+  document.getElementById('inp-user').value='';
+  document.getElementById('inp-pass').value='';
+}
+
+// ── TRƯỜNG ───────────────────────────────────────────────
+function showTruong(){
+  const tr=getTruong(currentUser.truongId);
+  const cols=getCols(tr.id);
+  const activeDot=getActiveDot();
+  document.getElementById('lbl-cap').textContent=isTHCS(tr.id)?'Trường THCS':'Trường Tiểu học';
+  document.getElementById('lbl-truong').textContent=tr.ten;
+
+  // Info box đợt
+  const infoBox=document.getElementById('dot-info-box');
+  const dotSub=document.getElementById('lbl-dot-sub');
+  const btnSave=document.getElementById('btn-save');
+  if(activeDot){
+    infoBox.style.display='flex';
+    infoBox.innerHTML=`<i class="ti ti-info-circle" style="font-size:16px;margin-top:1px;flex-shrink:0"></i><span><b>${activeDot.ten}</b> đang mở – Vui lòng điền và lưu số liệu trước khi đợt kết thúc.</span>`;
+    dotSub.textContent='Đang nhập cho: '+activeDot.ten;
+    btnSave.disabled=false;
+    btnSave.className='btn btn-primary';
+  } else {
+    infoBox.style.display='flex';
+    infoBox.style.background='#fef2f2';
+    infoBox.style.borderColor='#fecaca';
+    infoBox.style.color='#b91c1c';
+    infoBox.innerHTML=`<i class="ti ti-lock" style="font-size:16px;margin-top:1px;flex-shrink:0"></i><span>Hiện không có đợt nào đang mở. Vui lòng liên hệ Phòng VH-XH để được hỗ trợ.</span>`;
+    dotSub.textContent='Không có đợt đang mở';
+    btnSave.disabled=true;
+    btnSave.className='btn';
+  }
+
+  // Trạng thái nộp đợt hiện tại
+  const db=loadDB();
+  const dotId=activeDot?activeDot.id:null;
+  const saved=dotId&&db[tr.id]&&db[tr.id][dotId]?db[tr.id][dotId]:null;
+  document.getElementById('lbl-dot-status').textContent=saved?'Đã nộp đợt này':'Chưa nộp';
+  document.getElementById('lbl-dot-status').className='badge '+(saved?'badge-success':'badge-warn');
+
+  // Form
+  document.getElementById('form-fields').innerHTML=`
+    <div style="background:#f9f9f7;border-radius:8px;padding:10px 14px;margin-bottom:1rem;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div><div class="field-label">Số lớp ${cols.lop_label} (kế hoạch)</div><div style="font-weight:600">${tr.lop} lớp</div></div>
+      <div><div class="field-label">Số HS (kế hoạch)</div><div style="font-weight:600">${tr.hs} HS</div></div>
+    </div>
+    <div class="field-row">
+      <div><div class="field-label">(4) ${cols.c4}</div><input type="number" id="f4" min="0" placeholder="0" value="${saved?saved.f4:''}"/></div>
+      <div><div class="field-label">(5) ${cols.c5}</div><input type="number" id="f5" min="0" placeholder="0" value="${saved?saved.f5:''}"/></div>
+    </div>
+    <div class="field-row">
+      <div><div class="field-label">(6) ${cols.c6}</div><input type="number" id="f6" min="0" placeholder="0" value="${saved?saved.f6:''}"/></div>
+      <div><div class="field-label">(7) ${cols.c7}</div><input type="number" id="f7" min="0" placeholder="0" value="${saved?saved.f7:''}"/></div>
+    </div>
+    <div class="field-row">
+      <div><div class="field-label">(8) ${cols.c8}</div><input type="number" id="f8" min="0" placeholder="0" value="${saved?saved.f8:''}"/></div>
+      <div><div class="field-label">(9) ${cols.c9} (%)</div><input type="number" id="f9" min="0" max="200" step="0.1" placeholder="0.0" value="${saved?saved.f9:''}"/></div>
+    </div>
+    <div class="field-group">
+      <div class="field-label">Các vấn đề cần quan tâm</div>
+      <textarea id="f_note" placeholder="Ghi chú các vấn đề phát sinh, khó khăn, kiến nghị...">${saved?saved.note:''}</textarea>
+    </div>`;
+  switchTab('nhap');show('screen-truong');
+}
+
+function saveData(){
+  const activeDot=getActiveDot();
+  if(!activeDot){alert('Không có đợt nào đang mở!');return;}
+  const tr=getTruong(currentUser.truongId);
+  const db=loadDB();
+  if(!db[tr.id]) db[tr.id]={};
+  db[tr.id][activeDot.id]={
+    f4:parseInt(document.getElementById('f4').value)||0,
+    f5:parseInt(document.getElementById('f5').value)||0,
+    f6:parseInt(document.getElementById('f6').value)||0,
+    f7:parseInt(document.getElementById('f7').value)||0,
+    f8:parseInt(document.getElementById('f8').value)||0,
+    f9:parseFloat(document.getElementById('f9').value)||0,
+    note:document.getElementById('f_note').value.trim(),
+    time:nowStr()
+  };
+  saveDB(db);
+  document.getElementById('lbl-dot-status').textContent='Đã nộp đợt này';
+  document.getElementById('lbl-dot-status').className='badge badge-success';
+  const msg=document.getElementById('save-msg');
+  msg.style.display='inline';setTimeout(()=>msg.style.display='none',3000);
+}
+
+function switchTab(t){
+  document.getElementById('tab-nhap').classList.toggle('active',t==='nhap');
+  document.getElementById('tab-xem').classList.toggle('active',t==='xem');
+  document.getElementById('pane-nhap').style.display=t==='nhap'?'block':'none';
+  document.getElementById('pane-xem').style.display=t==='xem'?'block':'none';
+  if(t==='xem') renderHistory();
+}
+
+function renderHistory(){
+  const tr=getTruong(currentUser.truongId);
+  const cols=getCols(tr.id);
+  const db=loadDB();
+  const dots=loadDots();
+  const el=document.getElementById('view-data');
+  const truongData=db[tr.id]||{};
+  const hasDots=dots.filter(d=>truongData[d.id]);
+  if(hasDots.length===0){el.innerHTML='<p style="color:#888;font-size:13px">Chưa có dữ liệu nào được lưu.</p>';return;}
+  el.innerHTML=hasDots.map(dot=>{
+    const d=truongData[dot.id];
+    const ttBadge=dot.tt==='open'?'badge-success':dot.tt==='closed'?'badge-red':'badge-warn';
+    const ttLabel=dot.tt==='open'?'Đang mở':dot.tt==='closed'?'Đã đóng':'Sắp mở';
+    return `<div style="margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid #e5e5e3">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.75rem">
+        <span style="font-size:13px;font-weight:600">${dot.ten}</span>
+        <span class="badge ${ttBadge}" style="font-size:11px">${ttLabel}</span>
+        <span style="font-size:11px;color:#888">Cập nhật: ${d.time}</span>
+      </div>
+      <table class="tbl" style="max-width:580px">
+        <tr><td style="color:#555;width:72%">(4) ${cols.c4}</td><td class="num"><b>${d.f4}</b></td></tr>
+        <tr><td style="color:#555">(5) ${cols.c5}</td><td class="num"><b>${d.f5}</b></td></tr>
+        <tr><td style="color:#555">(6) ${cols.c6}</td><td class="num"><b>${d.f6}</b></td></tr>
+        <tr><td style="color:#555">(7) ${cols.c7}</td><td class="num"><b>${d.f7}</b></td></tr>
+        <tr><td style="color:#555">(8) ${cols.c8}</td><td class="num"><b>${d.f8}</b></td></tr>
+        <tr><td style="color:#555">(9) ${cols.c9}</td><td class="num"><b>${d.f9}%</b></td></tr>
+        ${d.note?`<tr><td style="color:#555">Các vấn đề cần quan tâm</td><td style="font-size:13px">${d.note}</td></tr>`:''}
+      </table>
+    </div>`;
+  }).join('');
+}
+
+// ── ADMIN ─────────────────────────────────────────────────
+function showAdmin(){
+  initDots();
+  const dots=loadDots();
+  adminDotId=dots.length>0?dots[0].id:null;
+  renderAdminStats();
+  renderDotSelector();
+  renderAdminTable(adminTab);
+  renderDotList();
+  switchAdminScreen('main');
+  show('screen-admin');
+}
+
+function switchAdminScreen(s){
+  document.getElementById('admin-main').style.display=s==='main'?'block':'none';
+  document.getElementById('admin-ql').style.display=s==='ql'?'block':'none';
+}
+
+function renderAdminStats(){
+  const db=loadDB();
+  const activeDot=getActiveDot();
+  const dotId=activeDot?activeDot.id:(loadDots()[0]||{}).id;
+  const daNop=ALL_TRUONG.filter(t=>db[t.id]&&db[t.id][dotId]).length;
+  const tongHS=ALL_TRUONG.reduce((s,t)=>s+(db[t.id]&&db[t.id][dotId]?db[t.id][dotId].f8:0),0);
+  const tongKH=ALL_TRUONG.reduce((s,t)=>s+t.hs,0);
+  const tl=tongKH>0?Math.round(tongHS/tongKH*100):0;
+  const dotLabel=activeDot?`<span class="dot"></span> ${activeDot.ten}`:'(chưa có đợt mở)';
+  document.getElementById('admin-stats').innerHTML=`
+    <div class="stat"><div class="stat-label">Tổng số trường</div><div class="stat-val">${ALL_TRUONG.length}</div></div>
+    <div class="stat"><div class="stat-label">Đã nộp (đợt hiện tại)</div><div class="stat-val" style="color:#1a7f3c">${daNop}</div></div>
+    <div class="stat"><div class="stat-label">Chưa nộp</div><div class="stat-val" style="color:#b45309">${ALL_TRUONG.length-daNop}</div></div>
+    <div class="stat"><div class="stat-label">Đợt đang mở</div><div class="stat-val" style="font-size:14px;padding-top:4px">${dotLabel}</div></div>`;
+}
+
+function renderDotSelector(){
+  const dots=loadDots();
+  const sel=document.getElementById('sel-dot');
+  sel.innerHTML=dots.map(d=>`<option value="${d.id}">${d.ten}</option>`).join('');
+  if(adminDotId) sel.value=adminDotId;
+  else if(dots.length) adminDotId=dots[0].id;
+  renderDotBadge();
+}
+
+function renderDotBadge(){
+  const dots=loadDots();
+  const dot=dots.find(d=>d.id===adminDotId);
+  const el=document.getElementById('lbl-dot-badge');
+  if(!dot){el.innerHTML='';return;}
+  const map={open:['badge-success','Đang mở'],closed:['badge-red','Đã đóng'],upcoming:['badge-warn','Sắp mở']};
+  const [cls,lbl]=map[dot.tt]||['badge-blue',dot.tt];
+  el.innerHTML=`<span class="badge ${cls}">${lbl}</span>`;
+  document.getElementById('btn-export-admin').innerHTML=`<i class="ti ti-file-spreadsheet"></i> Xuất Excel – ${dot.ten}`;
+}
+
+function onChangeDot(){
+  adminDotId=document.getElementById('sel-dot').value;
+  renderDotBadge();
+  renderAdminTable(adminTab);
+}
+
+function switchAdminTab(cap){
+  adminTab=cap;
+  document.getElementById('atab-thcs').classList.toggle('active',cap==='THCS');
+  document.getElementById('atab-th').classList.toggle('active',cap==='TH');
+  renderAdminTable(cap);
+}
+
+function renderAdminTable(cap){
+  const list=cap==='THCS'?TRUONG_THCS:TRUONG_TH;
+  const cols=cap==='THCS'?COL_THCS:COL_TH;
+  const db=loadDB();
+  const dotId=adminDotId;
+  let tot={lop:0,hs:0,f4:0,f5:0,f6:0,f7:0,f8:0,pcgd:0};
+  const rows=list.map((t,i)=>{
+    const d=db[t.id]&&db[t.id][dotId]?db[t.id][dotId]:null;
+    tot.lop+=t.lop;tot.hs+=t.hs;tot.pcgd+=t.pcgd;
+    if(d){tot.f4+=d.f4;tot.f5+=d.f5;tot.f6+=d.f6;tot.f7+=d.f7;tot.f8+=d.f8;}
+    const pct=d&&t.hs>0?Math.round(d.f8/t.hs*100):null;
+    const status=d?`<span class="badge badge-success" style="font-size:11px">Đã nộp</span>`:`<span class="badge badge-warn" style="font-size:11px">Chưa nộp</span>`;
+    return `<tr>
+      <td class="ctr">${i+1}</td>
+      <td style="white-space:nowrap;font-weight:500">${t.ten}</td>
+      <td class="num">${t.lop}</td><td class="num">${t.hs}</td>
+      <td class="num">${d?d.f4:'–'}</td><td class="num">${d?d.f5:'–'}</td>
+      <td class="num">${d?d.f6:'–'}</td><td class="num">${d?d.f7:'–'}</td>
+      <td class="num">${d?d.f8:'–'}</td>
+      <td style="min-width:80px">${pct!==null?`<div style="display:flex;align-items:center;gap:4px"><div class="progress-wrap" style="flex:1"><div class="progress-bar" style="width:${Math.min(pct,100)}%"></div></div><span style="font-size:11px">${pct}%</span></div>`:'–'}</td>
+      <td class="num">${t.pcgd}</td>
+      <td class="note-cell">${d&&d.note?d.note:'–'}</td>
+      <td class="date-cell">${d?d.time:'–'}</td>
+      <td class="ctr">${status}</td>
+    </tr>`;
+  }).join('');
+  const totTL=tot.hs>0?Math.round(tot.f8/tot.hs*100):0;
+  document.getElementById('admin-tbl').innerHTML=`
+    <thead>
+      <tr>
+        <th rowspan="2">TT</th><th rowspan="2">${cols.truong}</th>
+        <th colspan="2">${cols.lop_label}</th>
+        <th rowspan="2">(4)<br>${cols.c4}</th>
+        <th rowspan="2">(5)<br>${cols.c5}</th>
+        <th rowspan="2">(6)<br>${cols.c6}</th>
+        <th rowspan="2">(7)<br>${cols.c7}</th>
+        <th rowspan="2">(8)<br>${cols.c8}</th>
+        <th rowspan="2">(9)<br>${cols.c9}</th>
+        <th rowspan="2">(11)<br>${cols.c11}</th>
+        <th rowspan="2">Các vấn đề<br>cần quan tâm</th>
+        <th rowspan="2">Ngày cập nhật</th>
+        <th rowspan="2">Trạng thái</th>
+      </tr>
+      <tr><th>(3) Lớp</th><th>HS</th></tr>
+    </thead>
+    <tbody>${rows}</tbody>
+    <tfoot><tr>
+      <td colspan="2" class="ctr"><b>Tổng cộng</b></td>
+      <td class="num">${tot.lop}</td><td class="num">${tot.hs}</td>
+      <td class="num">${tot.f4||'–'}</td><td class="num">${tot.f5||'–'}</td>
+      <td class="num">${tot.f6||'–'}</td><td class="num">${tot.f7||'–'}</td>
+      <td class="num">${tot.f8||'–'}</td>
+      <td class="num">${tot.f8?totTL+'%':'–'}</td>
+      <td class="num">${tot.pcgd}</td>
+      <td colspan="3"></td>
+    </tr></tfoot>`;
+}
+
+// ── Quản lý đợt ──────────────────────────────────────────
+function renderDotList(){
+  const dots=loadDots();
+  const db=loadDB();
+  const el=document.getElementById('dot-list');
+  if(!dots.length){el.innerHTML='<p style="color:#888;font-size:13px">Chưa có đợt nào.</p>';return;}
+  const ttMap={open:['badge-success','Đang mở'],closed:['badge-red','Đã đóng'],upcoming:['badge-warn','Sắp mở']};
+  el.innerHTML=`<table class="tbl">
+    <thead><tr><th>Tên đợt</th><th>Trạng thái</th><th>Đã nộp</th><th>Ngày tạo</th><th>Thao tác</th></tr></thead>
+    <tbody>${dots.map((d,i)=>{
+      const [cls,lbl]=ttMap[d.tt]||['badge-blue',d.tt];
+      const daNop=ALL_TRUONG.filter(t=>db[t.id]&&db[t.id][d.id]).length;
+      return `<tr>
+        <td style="font-weight:500">${d.ten}</td>
+        <td class="ctr"><span class="badge ${cls}">${lbl}</span></td>
+        <td class="ctr">${daNop}/${ALL_TRUONG.length}</td>
+        <td class="date-cell">${d.created}</td>
+        <td class="ctr" style="white-space:nowrap">
+          ${d.tt!=='open'?`<button class="btn btn-green btn-sm" onclick="setDotStatus('${d.id}','open')" style="margin-right:4px"><i class="ti ti-lock-open"></i> Mở</button>`:''}
+          ${d.tt==='open'?`<button class="btn btn-sm" style="background:#fff3e0;color:#b45309;border-color:#fcd34d;margin-right:4px" onclick="setDotStatus('${d.id}','closed')"><i class="ti ti-lock"></i> Đóng</button>`:''}
+          <button class="btn btn-sm" style="background:#fef2f2;color:#b91c1c;border-color:#fecaca" onclick="deleteDot('${d.id}')"><i class="ti ti-trash"></i></button>
+        </td>
+      </tr>`;
+    }).join('')}</tbody>
+  </table>`;
+}
+
+function addDot(){
+  const ten=document.getElementById('new-dot-ten').value.trim();
+  const tt=document.getElementById('new-dot-tt').value;
+  if(!ten){alert('Vui lòng nhập tên đợt!');return;}
+  const dots=loadDots();
+  dots.push({id:'dot'+Date.now(),ten,tt,created:nowStr()});
+  saveDots(dots);
+  document.getElementById('new-dot-ten').value='';
+  renderDotList();
+  renderDotSelector();
+  renderAdminStats();
+  showAdmin();
+}
+
+function setDotStatus(id,tt){
+  const dots=loadDots();
+  // Nếu mở đợt mới thì đóng các đợt đang mở khác
+  if(tt==='open') dots.forEach(d=>{if(d.id!==id&&d.tt==='open') d.tt='closed';});
+  const dot=dots.find(d=>d.id===id);
+  if(dot) dot.tt=tt;
+  saveDots(dots);
+  renderDotList();
+  renderDotSelector();
+  renderAdminStats();
+}
+
+function deleteDot(id){
+  if(!confirm('Xóa đợt này? Dữ liệu số liệu của đợt sẽ không bị mất.')) return;
+  let dots=loadDots();
+  dots=dots.filter(d=>d.id!==id);
+  saveDots(dots);
+  renderDotList();
+  renderDotSelector();
+}
+
+// ── Xuất Excel ────────────────────────────────────────────
+function exportExcel(){
+  if(typeof XLSX==='undefined'){alert('Thư viện Excel chưa tải xong.');return;}
+  const dots=loadDots();
+  const dot=dots.find(d=>d.id===adminDotId);
+  const dotLabel=dot?dot.ten:'Tổng hợp';
+  const db=loadDB();
+  const wb=XLSX.utils.book_new();
+  [{list:TRUONG_THCS,cols:COL_THCS,sn:'THCS'},{list:TRUONG_TH,cols:COL_TH,sn:'Tiểu học'}].forEach(({list,cols,sn})=>{
+    const H=['TT',cols.truong,cols.lop_label+' - Lớp',cols.lop_label+' - HS',
+      '(4) '+cols.c4,'(5) '+cols.c5,'(6) '+cols.c6,'(7) '+cols.c7,
+      '(8) '+cols.c8,'(9) '+cols.c9+' (%)','(11) '+cols.c11,
+      'Các vấn đề cần quan tâm','Ngày cập nhật','Trạng thái'];
+    const rows=list.map((t,i)=>{
+      const d=db[t.id]&&db[t.id][adminDotId]?db[t.id][adminDotId]:null;
+      return[i+1,t.ten,t.lop,t.hs,d?d.f4:'',d?d.f5:'',d?d.f6:'',d?d.f7:'',d?d.f8:'',d?d.f9:'',t.pcgd,d?d.note:'',d?d.time:'',d?'Đã nộp':'Chưa nộp'];
+    });
+    const tot=list.reduce((s,t)=>{const d=db[t.id]&&db[t.id][adminDotId]?db[t.id][adminDotId]:null;return{lop:s.lop+t.lop,hs:s.hs+t.hs,f4:s.f4+(d?d.f4:0),f5:s.f5+(d?d.f5:0),f6:s.f6+(d?d.f6:0),f7:s.f7+(d?d.f7:0),f8:s.f8+(d?d.f8:0),pcgd:s.pcgd+t.pcgd};},{lop:0,hs:0,f4:0,f5:0,f6:0,f7:0,f8:0,pcgd:0});
+    const totTL=tot.hs>0?Math.round(tot.f8/tot.hs*100):0;
+    rows.push(['','Tổng cộng',tot.lop,tot.hs,tot.f4,tot.f5,tot.f6,tot.f7,tot.f8,tot.f8?totTL+'%':'',tot.pcgd,'','','']);
+    const ws=XLSX.utils.aoa_to_sheet([H,...rows]);
+    ws['!cols']=[{wch:5},{wch:26},{wch:8},{wch:8},{wch:18},{wch:30},{wch:16},{wch:18},{wch:12},{wch:14},{wch:8},{wch:32},{wch:18},{wch:12}];
+    XLSX.utils.book_append_sheet(wb,ws,sn);
+  });
+  const now=new Date();
+  const safe=dotLabel.replace(/[\/\\:*?"<>|]/g,'_');
+  XLSX.writeFile(wb,`TienDo_${safe}_${now.getDate().toString().padStart(2,'0')}${(now.getMonth()+1).toString().padStart(2,'0')}${now.getFullYear()}.xlsx`);
+}
+</script>
+</body>
+</html>
